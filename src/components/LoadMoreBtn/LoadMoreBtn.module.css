@@ -1,0 +1,16 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  background-color: #4e7af3;
+  height: 44px;
+  border: 1px solid #080808;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 18px;
+}
+.btn:hover {
+  color: #ffffff;
+  border: 1px solid #4e7af3;
+}

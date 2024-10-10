@@ -11,7 +11,7 @@ import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 
 const App = () => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState(null);
@@ -83,7 +83,7 @@ const App = () => {
       {error ? (
         <ErrorMessage />
       ) : (
-        images.length > 0 && (
+        images?.length > 0 && (
           <>
             <ImageGallery images={images} openModal={openModal} />
             {!loadMore && <LoadMoreBtn loadMoreImages={pagePlus} />}

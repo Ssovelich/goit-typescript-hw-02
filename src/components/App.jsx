@@ -18,8 +18,8 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalImage, setModalImage] = useState("");
-  const [modalAlt, setModalAlt] = useState("");
+  const [modalImage, setModalImage] = useState(null);
+  const [modalAlt, setModalAlt] = useState(null);
 
   useEffect(() => {
     async function fetchImagesHandler() {
@@ -28,7 +28,7 @@ const App = () => {
         const data = await fetchImages(query, page);
         const results = data.results;
         if (results.length === 0) {
-          toast("Sorry there is no results with this search query", {
+          toast.error("Sorry there is no results with this query", {
             position: "top-right",
             style: {
               border: "1px solid #f52121",

@@ -16,7 +16,14 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-const ImageModal = ({ modalImage, modalAlt, modalIsOpen, closeModal }) => {
+const ImageModal = ({
+  modalImage,
+  modalAlt,
+  modalIsOpen,
+  closeModal,
+  modalLikes,
+  modalName,
+}) => {
   return (
     <div>
       <Modal
@@ -26,7 +33,11 @@ const ImageModal = ({ modalImage, modalAlt, modalIsOpen, closeModal }) => {
         contentLabel="Image Modal"
       >
         <img className={styles.image} src={modalImage} alt={modalAlt}></img>
-        <p className={styles.text}>Tegs: {modalAlt}</p>
+        <div className={styles.wrapText}>
+          <p className={styles.text}>Tegs: {modalAlt} </p>
+          <p className={styles.text}>Likes: {modalLikes}</p>
+          <p className={styles.text}>User name: {modalAlt} </p>
+        </div>
       </Modal>
     </div>
   );

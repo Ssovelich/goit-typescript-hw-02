@@ -20,6 +20,8 @@ const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   const [modalAlt, setModalAlt] = useState(null);
+  const [modalLikes, setModalLikes] = useState(null);
+  const [modalName, setModalName] = useState(null);
 
   useEffect(() => {
     async function fetchImagesHandler() {
@@ -65,10 +67,12 @@ const App = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const openModal = (url, alt) => {
+  const openModal = (url, alt, likes, name) => {
     setModalIsOpen(true);
     setModalImage(url);
     setModalAlt(alt);
+    setModalLikes(likes);
+    setModalName(name);
   };
 
   const closeModal = () => {
@@ -98,6 +102,8 @@ const App = () => {
         closeModal={closeModal}
         modalImage={modalImage}
         modalAlt={modalAlt}
+        modalLikes={modalLikes}
+        modalName={modalName}
       />
     </div>
   );

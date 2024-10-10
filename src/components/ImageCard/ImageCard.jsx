@@ -1,6 +1,12 @@
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({ urls: { small, regular }, altDescription, openModal }) => {
+const ImageCard = ({
+  urls: { small, regular },
+  likes,
+  user: { name },
+  altDescription,
+  openModal,
+}) => {
   return (
     <>
       <li className={styles.imageItem}>
@@ -8,7 +14,7 @@ const ImageCard = ({ urls: { small, regular }, altDescription, openModal }) => {
           className={styles.image}
           src={small}
           alt={altDescription}
-          onClick={() => openModal(regular, altDescription)}
+          onClick={() => openModal(regular, altDescription, likes, name)}
         ></img>
       </li>
     </>

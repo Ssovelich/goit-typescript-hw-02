@@ -11,6 +11,8 @@ const ImageGallery = ({ images, openModal }) => {
               key={image.id}
               urls={image.urls}
               altDescription={image.alt_description}
+              likes={image.likes}
+              user={image.user}
               openModal={openModal}
             />
           );

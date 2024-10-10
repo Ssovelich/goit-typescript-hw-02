@@ -36,7 +36,7 @@ const ImageModal = ({
         <div className={styles.wrapText}>
           <p className={styles.text}>Tegs: {modalAlt} </p>
           <p className={styles.text}>Likes: {modalLikes}</p>
-          <p className={styles.text}>User name: {modalAlt} </p>
+          <p className={styles.text}>User name: {modalName} </p>
         </div>
       </Modal>
     </div>

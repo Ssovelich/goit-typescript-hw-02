@@ -9,18 +9,19 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "transparent",
-    overflow: "hidden",
+    // backgroundColor: "transparent",
+    overflow: "auto",
+    outline: "none",
   },
-  overlay: {
-    background: "rgba(0, 0, 0, 0.5)",
-    zIndex: 9999,
-  },
+  // overlay: {
+  //   background: "rgba(0, 0, 0, 0.5)",
+  //   zIndex: 9999,
+  // },
 };
 
 Modal.setAppElement("#root");
 
-const ImageModal = (regular, altDescription, modalIsOpen, closeModal) => {
+const ImageModal = ({ modalImage, modalAlt, modalIsOpen, closeModal }) => {
   return (
     <div>
       <Modal
@@ -29,7 +30,7 @@ const ImageModal = (regular, altDescription, modalIsOpen, closeModal) => {
         style={customStyles}
         contentLabel="Image Modal"
       >
-        <img className={styles.image} src={regular} alt={altDescription}></img>
+        <img className={styles.image} src={modalImage} alt={modalAlt}></img>
       </Modal>
     </div>
   );

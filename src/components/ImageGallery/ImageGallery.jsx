@@ -1,7 +1,7 @@
 import ImageCard from "../ImageCard/ImageCard";
 import styles from "./ImageGallery.module.css";
 
-const ArticleList = ({ images, openModal }) => {
+const ImageGallery = ({ images, openModal }) => {
   return (
     <ul className={styles.imageList}>
       {images !== null &&
@@ -19,4 +19,4 @@ const ArticleList = ({ images, openModal }) => {
   );
 };
 
-export default ArticleList;
+export default ImageGallery;

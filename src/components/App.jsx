@@ -1,6 +1,7 @@
 import styles from "./App.module.css";
 import { fetchImages } from "../services/api";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import Loader from "./Loader/Loader";
 import SearchBar from "./SearchBar/SearchBar";
@@ -17,6 +18,8 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [modalAlt, setModalAlt] = useState("");
 
   useEffect(() => {
     async function fetchImagesHandler() {
@@ -24,6 +27,20 @@ const App = () => {
         setLoading(true);
         const data = await fetchImages(query, page);
         const results = data.results;
+        if (results.length === 0) {
+          toast("Sorry there is no results with this search query", {
+            position: "top-right",
+            style: {
+              border: "1px solid #f52121",
+              padding: "16px",
+              color: "#f52121",
+              height: "20px",
+              fontWeight: "500",
+              backgroundColor: "#fc9c9c",
+            },
+          });
+          return;
+        }
         console.log(data.results);
         setLoadMore(page >= data.total_pages);
         setImages((prevState) => [...prevState, ...results]);
@@ -48,8 +65,10 @@ const App = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const openModal = () => {
+  const openModal = (url, alt) => {
     setModalIsOpen(true);
+    setModalImage(url);
+    setModalAlt(alt);
   };
 
   const closeModal = () => {
@@ -58,6 +77,7 @@ const App = () => {
 
   return (
     <div className={styles.container}>
+      <Toaster />
       <SearchBar setQuery={setQuery} reset={onSubmitReset} />
 
       {error ? (
@@ -73,7 +93,12 @@ const App = () => {
 
       {loading && <Loader />}
 
-      <ImageModal isOpen={modalIsOpen} closeModal={closeModal} />
+      <ImageModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        modalImage={modalImage}
+        modalAlt={modalAlt}
+      />
     </div>
   );
 };

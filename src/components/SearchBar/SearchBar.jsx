@@ -4,11 +4,13 @@ import toast, { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ reset, setQuery }) => {
   const handleSubmit = (event) => {
+    //Скидання дефолтного перезаваннтаження форми прр сабміті
     event.preventDefault();
-
+    //Знаходимо форму
     const form = event.target;
+    //знаходимо значення елемента фомми(input)
     const query = form.elements.search.value.trim();
-
+    //Якщо відпривлено пучти запрос, зявиться повідомлення
     if (!query) {
       toast.error("Enter the query text", {
         position: "top-right",
@@ -22,8 +24,11 @@ const SearchBar = ({ reset, setQuery }) => {
         },
       });
     } else {
+      //Скидання форми
       reset();
+      //Записуємо значення input в стан query
       setQuery(query);
+      //Скидання значення input
       event.target.reset();
     }
   };

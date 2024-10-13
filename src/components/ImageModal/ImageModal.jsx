@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import styles from "./ImageModal.module.css";
+import { IoMdClose } from "react-icons/io";
 
 const customStyles = {
   content: {
@@ -32,6 +33,9 @@ const ImageModal = ({
         style={customStyles}
         contentLabel="Image Modal"
       >
+        <button onClick={closeModal} className={styles.btn}>
+          <IoMdClose size={25} />
+        </button>
         <img className={styles.image} src={modalImage} alt={modalAlt}></img>
         <div className={styles.wrapText}>
           <p className={styles.text}>Tegs: {modalAlt} </p>

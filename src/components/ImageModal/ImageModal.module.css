@@ -1,3 +1,20 @@
+.btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 7px;
+}
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
 .image {
   object-fit: cover;
   width: 100%;

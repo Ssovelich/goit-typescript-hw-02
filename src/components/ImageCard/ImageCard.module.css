@@ -7,3 +7,6 @@
   object-fit: cover;
   cursor: pointer;
 }
+.imageItem:hover {
+  transform: scale(1.03);
+}

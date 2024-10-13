@@ -26,9 +26,11 @@ const App = () => {
   useEffect(() => {
     async function fetchImagesHandler() {
       try {
+        //показуємо лоадер
         setLoading(true);
         const data = await fetchImages(query, page);
         const results = data.results;
+        //якщо від сервера отримано порожні обєкт показємо повідомлення
         if (results.length === 0) {
           toast.error("Sorry there is no results with this query", {
             position: "top-right",
@@ -43,13 +45,13 @@ const App = () => {
           });
           return;
         }
-        console.log(data.results);
         setLoadMore(page >= data.total_pages);
         setImages((prevState) => [...prevState, ...results]);
       } catch (error) {
         setError(true);
         console.log(error);
       } finally {
+        //Приховуємо лоадер
         setLoading(false);
       }
     }
@@ -57,12 +59,23 @@ const App = () => {
       fetchImagesHandler();
     }
   }, [query, page]);
+  //прокрутка вниз на висоту сторінки після натискання loadMore
+  useEffect(() => {
+    if (images?.length > 16) {
+      window.scrollBy({
+        //innerHeight висота области просмотра окна браузера
+        top: window.innerHeight,
+        //smooth плавна прокрутка
+        behavior: "smooth",
+      });
+    }
+  }, [images]);
 
   const onSubmitReset = () => {
     setQuery("");
     setImages([]);
   };
-
+  //при натисканні loadMore додаємо в стан page до попереднього значеня(prevState) +1
   const pagePlus = () => {
     setPage((prevState) => prevState + 1);
   };

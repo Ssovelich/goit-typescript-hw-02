@@ -10,13 +10,11 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ reset, setQuery }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    //Скидання дефолтного перезаваннтаження форми прр сабміті
     event.preventDefault();
-    //Знаходимо форму
     const form = event.target as HTMLFormElement;
-    //знаходимо значення елемента фомми(input)
-    const query = form.elements.search.value.trim() as HTMLInputElement;
-    //Якщо відпривлено пучти запрос, зявиться повідомлення
+    const input = form.elements.namedItem("input") as HTMLInputElement;
+    const query = input.value.trim();
+
     if (!query) {
       toast.error("Enter the query text", {
         position: "top-right",
@@ -29,13 +27,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ reset, setQuery }) => {
           backgroundColor: "#fc9c9c",
         },
       });
+      return;
     } else {
       //Скидання форми
-      reset();
+      // reset();
       //Записуємо значення input в стан query
       setQuery(query);
       //Скидання значення input
-      event.target.reset();
+      form.reset();
     }
   };
 

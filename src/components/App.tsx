@@ -12,17 +12,11 @@ import ImageModal from "./ImageModal/ImageModal";
 
 import { Api, Image, ModalProps } from "../services/types";
 
-// interface Api {
-//   results: Image[];
-//   total_pages: number;
-//   query: string;
-// }
-
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [query, setQuery] = useState<string | null>(null);
+  const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [loadMore, setLoadMore] = useState<boolean>(false);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);

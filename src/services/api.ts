@@ -25,8 +25,8 @@ export const fetchImages = async <T>(
   //додається в обєкт params нові значення для параметрів (query, page)
   config.params.query = query;
   config.params.page = page;
-  const response = (await axios.get)<T>("search/photos", config);
-  return response.data;
+  const { data } = await axios.get<T>("search/photos", config);
+  return data;
 };
 
 export default fetchImages;

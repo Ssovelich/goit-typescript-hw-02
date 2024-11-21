@@ -1,7 +1,7 @@
 import styles from "./LoadMoreBtn.module.css";
 
 interface LoadMoreBtnProps {
-  onClick: () => void;
+  loadMoreImages: () => void;
 }
 
 const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({ loadMoreImages }) => {

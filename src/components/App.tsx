@@ -20,19 +20,17 @@ const App = () => {
   const [page, setPage] = useState<number>(1);
   const [loadMore, setLoadMore] = useState<boolean>(false);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [modalImage, setModalImage] = useState<ModalProps | null>(null);
-  const [modalAlt, setModalAlt] = useState<string | null>(null);
-  const [modalLikes, setModalLikes] = useState<number | null>(null);
-  const [modalName, setModalName] = useState<string | null>(null);
+  const [modalImage, setModalImage] = useState<string>("");
+  const [modalAlt, setModalAlt] = useState<string>("");
+  const [modalLikes, setModalLikes] = useState<number>(0);
+  const [modalName, setModalName] = useState<string>("");
 
   useEffect(() => {
     async function fetchImagesHandler() {
       try {
-        //показуємо лоадер
         setLoading(true);
         const data: Api = await fetchImages(query, page);
         const results = data.results;
-        //якщо від сервера отримано порожні обєкт показємо повідомлення
         if (results.length === 0) {
           toast.error("Sorry there is no results with this query", {
             position: "top-right",
@@ -82,7 +80,12 @@ const App = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const openModal = ({ url, alt, likes, name }: ModalProps) => {
+  const openModal = ({
+    urls: { regular: url },
+    alt_description: alt,
+    likes,
+    user: { name },
+  }: Image) => {
     setModalIsOpen(true);
     setModalImage(url);
     setModalAlt(alt);

@@ -24,7 +24,6 @@ interface Props {
   modalName: string;
   modalIsOpen: boolean;
   closeModal: () => void;
-  onClick: () => void;
 }
 
 const ImageModal = ({

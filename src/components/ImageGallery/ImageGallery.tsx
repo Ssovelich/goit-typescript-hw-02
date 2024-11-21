@@ -4,7 +4,7 @@ import styles from "./ImageGallery.module.css";
 
 interface ImageGalleryProps {
   images: Image[];
-  openModal: (imageData: ModalProps) => void;
+  openModal: (imageData: Image) => void;
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, openModal }) => {
@@ -13,14 +13,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, openModal }) => {
       {images !== null &&
         images.map((image) => {
           return (
-            <ImageCard
-              key={image.id}
-              urls={image.urls}
-              altDescription={image.alt_description}
-              likes={image.likes}
-              user={image.user}
-              openModal={openModal}
-            />
+            <ImageCard key={image.id} data={image} openModal={openModal} />
           );
         })}
     </ul>

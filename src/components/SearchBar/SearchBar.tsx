@@ -5,15 +5,17 @@ import { FormEvent } from "react";
 
 interface SearchBarProps {
   reset: () => void;
-  setQuery: () => void;
+  setQuery: (query: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ reset, setQuery }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+
     const form = event.target as HTMLFormElement;
-    const input = form.elements.namedItem("input") as HTMLInputElement;
-    const query = input.value.trim();
+    const query = (
+      form.elements.namedItem("search") as HTMLInputElement
+    ).value.trim();
 
     if (!query) {
       toast.error("Enter the query text", {
@@ -29,11 +31,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ reset, setQuery }) => {
       });
       return;
     } else {
-      //Скидання форми
-      // reset();
-      //Записуємо значення input в стан query
+      reset();
       setQuery(query);
-      //Скидання значення input
       form.reset();
     }
   };

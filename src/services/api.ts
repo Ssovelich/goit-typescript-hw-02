@@ -16,11 +16,14 @@ const config = {
   },
 };
 
-export const fetchImages = async (query, page) => {
+export const fetchImages = async <T>(
+  query: string,
+  page: number
+): Promise<T> => {
   //додається в обєкт params нові параметри (query, page) зі значеннями
   config.params.query = query;
   config.params.page = page;
-  const response = await axios.get("search/photos", config);
+  const response = (await axios.get)<T>("search/photos", config);
   return response.data;
 };
 

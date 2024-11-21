@@ -10,7 +10,13 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 
-import { Image, ModalProps } from "../services/types";
+import { Api, Image, ModalProps } from "../services/types";
+
+// interface Api {
+//   results: Image[];
+//   total_pages: number;
+//   query: string;
+// }
 
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -30,7 +36,7 @@ const App = () => {
       try {
         //показуємо лоадер
         setLoading(true);
-        const data = await fetchImages(query, page);
+        const data: Api = await fetchImages(query, page);
         const results = data.results;
         //якщо від сервера отримано порожні обєкт показємо повідомлення
         if (results.length === 0) {

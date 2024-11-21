@@ -19,3 +19,9 @@ export interface ModalProps {
   alt: string;
   likes: number;
 }
+
+export interface Api {
+  results: Image[];
+  total_pages: number;
+  query: string;
+}

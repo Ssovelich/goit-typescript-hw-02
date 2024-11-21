@@ -10,18 +10,20 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 
+import { Image, ModalProps } from "../services/types";
+
 const App = () => {
-  const [images, setImages] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [query, setQuery] = useState(null);
-  const [page, setPage] = useState(1);
-  const [loadMore, setLoadMore] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalImage, setModalImage] = useState(null);
-  const [modalAlt, setModalAlt] = useState(null);
-  const [modalLikes, setModalLikes] = useState(null);
-  const [modalName, setModalName] = useState(null);
+  const [images, setImages] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [query, setQuery] = useState<string | null>(null);
+  const [page, setPage] = useState<number>(1);
+  const [loadMore, setLoadMore] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<ModalProps | null>(null);
+  const [modalAlt, setModalAlt] = useState<string | null>(null);
+  const [modalLikes, setModalLikes] = useState<number | null>(null);
+  const [modalName, setModalName] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchImagesHandler() {
@@ -80,7 +82,7 @@ const App = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const openModal = (url, alt, likes, name) => {
+  const openModal = ({ url, alt, likes, name }: ModalProps) => {
     setModalIsOpen(true);
     setModalImage(url);
     setModalAlt(alt);

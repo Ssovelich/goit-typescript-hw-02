@@ -1,15 +1,21 @@
 import styles from "./SearchBar.module.css";
 import { CiSearch } from "react-icons/ci";
 import toast, { Toaster } from "react-hot-toast";
+import { FormEvent } from "react";
 
-const SearchBar = ({ reset, setQuery }) => {
-  const handleSubmit = (event) => {
+interface SearchBarProps {
+  reset: () => void;
+  setQuery: () => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ reset, setQuery }) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     //Скидання дефолтного перезаваннтаження форми прр сабміті
     event.preventDefault();
     //Знаходимо форму
-    const form = event.target;
+    const form = event.target as HTMLFormElement;
     //знаходимо значення елемента фомми(input)
-    const query = form.elements.search.value.trim();
+    const query = form.elements.search.value.trim() as HTMLInputElement;
     //Якщо відпривлено пучти запрос, зявиться повідомлення
     if (!query) {
       toast.error("Enter the query text", {

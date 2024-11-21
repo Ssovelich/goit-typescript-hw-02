@@ -1,6 +1,12 @@
+import { Image, ModalProps } from "../../services/types";
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({
+interface ImageCardProps {
+  data: Image;
+  openModal: (imageData: ModalProps) => void;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({
   urls: { small, regular },
   likes,
   user: { name },

@@ -17,6 +17,16 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
+interface Props {
+  modalImage: string;
+  modalAlt: string;
+  modalLikes: number;
+  modalName: string;
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  onClick: () => void;
+}
+
 const ImageModal = ({
   modalImage,
   modalAlt,
@@ -24,7 +34,7 @@ const ImageModal = ({
   closeModal,
   modalLikes,
   modalName,
-}) => {
+}: Props) => {
   return (
     <div>
       <Modal

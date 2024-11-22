@@ -12,14 +12,6 @@ export interface Image {
   likes: number;
 }
 
-export interface ModalProps {
-  url: string;
-  name: string;
-  description: string;
-  alt: string;
-  likes: number;
-}
-
 export interface Api {
   results: Image[];
   total_pages: number;

@@ -1,4 +1,4 @@
-import { Image, ModalProps } from "../../services/types";
+import { Image } from "../../services/types";
 import ImageCard from "../ImageCard/ImageCard";
 import styles from "./ImageGallery.module.css";
 

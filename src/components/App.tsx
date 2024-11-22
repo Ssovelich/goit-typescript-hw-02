@@ -10,7 +10,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 
-import { Api, Image, ModalProps } from "../services/types";
+import { Api, Image } from "../services/types";
 
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
